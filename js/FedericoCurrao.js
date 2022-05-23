@@ -1,16 +1,7 @@
 
 
 
-
-
-
-
-// // - PROYECTO >> E-COMMERCE Y SISTEMA PARA EMPLEADOS  //////////////////////////////////////////////////////////
-
-
-	 ///////////////////////////////
-	 // 	  INSTANCIAS !!!
-	 ///////////////////////////////
+//////////////////////////////////////////////////
 
 
 const suma = (a,b) =>  a + b;
@@ -28,7 +19,7 @@ let i=0
 let idNew2 = 0
 let subtotal = 0
 const idNew3=0
-
+ 
 const nombreDado1 = ""
 const precioDado1 = 0
 const cantDado1 = 0
@@ -40,6 +31,10 @@ let cuadroPrincipal3 = document.getElementById("cuadroPrincipal3")
 const btnCliente = document.getElementById('btnCliente');
 const btnEmpleado = document.getElementById('btnEmpleado');
 const btnAceptar = document.getElementById('btnAceptar')
+const btnprobando = document.getElementById(`btnprobando`)
+const micarroGuardado1 = []
+const listaNombres = []
+const miCarrito = []
 const items = [
     {nombre: "ARROZ", precio: 130, nroItem: 1, cantidad:10},
     {nombre: "MAYONESA", precio: 230, nroItem: 2, cantidad:10},
@@ -49,24 +44,11 @@ const items = [
 	{nombre: "GARBANZOS", precio: 658, nroItem: 6, cantidad:20},
 	{nombre: "CHOCLO", precio: 333, nroItem: 7, cantidad:11},
 	{nombre: "YERBA", precio: 800, nroItem: 8, cantidad:650}
-
     ]
-
 const itemsCompraAhora = [
     {nombre: "", precio: 0, nroItem: 0, cantidad:0},
     ]
 
-const micarroGuardado1 = []
-const micarroGuardado2 = []
-const listaNombres = []
-const miCarrito = []
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////
 
 class Producto {
     constructor(nombre, precio, nroItem, cantidad){
@@ -83,76 +65,35 @@ class Producto {
     }
 }
 
-
-
-class Producto2 {
-    constructor(nombre, precio, nroItem, cantidad){
-        this.nombre = nombre.toUpperCase();
-        this.precio = parseFloat(precio);
-        this.nroItem = nroItem;
-        this.cantidad = cantidad;
-        this.vendido = false;
-         	this.subtotal = subtotal;
-    }
-
+function desestructurar(parametroUsuario) {
+	const { nombreU,edadU} = parametroUsuario
+	console.log(nombreU,"DE", edadU,"AÑOS")
 }
 
-
-
-
-	 ///////////////////////////////
-	 // 	  FUNCIONES !!!
-	 ///////////////////////////////
-
-
 function mostrarArrayItems(items,cuadro){
-	 			cuadro.innerHTML = " "
-    		for (const item of items) {
-				cuadro.innerHTML += `<br><br> nombre: ${item.nombre} 
-				<br> precio:  ${item.precio} <br> cantidad: ${item.cantidad}
-				 <br> Nro Item:  ${item.nroItem} 
+	cuadro.innerHTML = " "
+	for (const item of items) {
+		cuadro.innerHTML += `<br><br> nombre: ${item.nombre} 
+		<br> precio:  ${item.precio} <br> cantidad: ${item.cantidad}
+		<br> Nro Item:  ${item.nroItem} 
 
-				`
-    		} 
+		`
+	} 
 }
     		
 
-function chekearCocinaOBanoOesCero(codigo) {
- 
- 	if(codigo == 0){
- 	
-	alert("Gracias por utilizar el sistema!  ADIOS! ");
-	console.log("Gracias por utilizar el sistema! ADIOS! ");
- 	} else {
-	if(codigo != 1 && codigo != 2){
-		alert("EL CODIGO QUE INGRESASTE ES INCORRECTO");
-		console.log("EL CODIGO QUE INGRESASTE ES INCORRECTO");
-	} 
-		else {
-
-	let nombreProducto = prompt("Ingresar el nombre del producto: ");
-	let precioProducto = parseInt(prompt("Ingresar el precio del producto: "));
-	let descuento = parseInt(prompt("Ingresar el descuento en efectivo: "));
-
-	let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento) 
-	nuevoPrecio2 = nuevoPrecio;
-	nroItem = items.length+1;
-	alert("Gracias por utilizar el sistema! ");
-	alert("El nuevo precio final (con iva y el descuento) de " + nombreProducto + " es: " + nuevoPrecio);
-
-	items.push(new Producto( nombreProducto,nuevoPrecio, nroItem))
-
-
-
-	}
-	}
-
-}
-	
-
 function 	mostrarAlgoxAmbos(parametroAMostrar){
 	console.log(parametroAMostrar)
-	alert(parametroAMostrar)
+
+	Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: ` ${parametroAMostrar}`,
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
+
 }
 
 function limpiarCampos(){
@@ -160,68 +101,96 @@ function limpiarCampos(){
 	cuadroPrincipal3.innerHTML = "" 
 	cuadroPrincipal4.innerHTML = ""
 	cuadroPrincipal5.innerHTML = ""
-		cuadroPrincipal6.innerHTML = ""
-cuadroPrincipalArribaArriba.innerHTML = "" 
+	cuadroPrincipal6.innerHTML = ""
+	cuadroPrincipalArribaArriba.innerHTML = "" 
+	cuadroPrincipal8.innerHTML = ""
 
 }
 
 function vaciarArray(arrayAVaciar){
-			
-			for (let i = arrayAVaciar.length; i > 0; i--) {
-			arrayAVaciar.pop();
-			} 
+	for (let i = arrayAVaciar.length; i > 0; i--) {
+		arrayAVaciar.pop();
+	} 
 }
 
 function guardarLocal (clave, valor)  {
-				localStorage.setItem(clave, valor)
-				}
+	localStorage.setItem(clave, valor)
+}
 
 function guardarSession (clave, valor)  {
-				sessionStorage.setItem(clave, valor)
-				}
-    
-
-	 ///////////////////////////////
-	 // 	  INICIO DEL PROGRAMA !!!
-	 ///////////////////////////////
+	sessionStorage.setItem(clave, valor)
+}
 
 
-    // EXCELENTE PARA MI PAGINA
 
 Swal.fire({
     position: 'top',
     icon: 'success',
     title: "Bienvenidos al sistema de CALCULOS DE PRECIOS FINALES! " + "\n " + "(use MAYUSCULAS) ",
     showConfirmButton: false,
-    timer: 2000,
+    timer: 1000,
 })
-
-();
-
 
     localStorage.clear()
     sessionStorage.clear()
 
 
-
+   btnprobando.addEventListener('click', () => {
    
+   limpiarCampos()
+
+	cuadroPrincipal8.innerHTML = `<br> Usuario: <input type="text" value="" id="nombreU"></input> <br>
+	Edad: <input type="number" value="" id="edadU"></input> <br>
+	Contraseña: <input type="password" name"contra2" id="contraU"></input> <br>
+	<button class="btn btn-warning btn-custom m-1"  id="btnokU"> LOG IN </button>`
+
+	btnokU.addEventListener("click", () => {
+		
+		const usuario = {
+				nombreU: document.getElementById(`nombreU`).value,
+				edadU: document.getElementById(`edadU`).value
+		}
+
+		const contraU = document.getElementById(`contraU`).value
+
+		if ( usuario.nombreU != ""){
+		desestructurar(usuario)
+		cuadroPrincipal8.innerHTML = `<h2 style="color: green;"> Usuario = ${usuario.nombreU}</h2>`
+	
+
+	  Toastify({
+		  text: `Usuario = ${usuario.nombreU}  `,
+		  duration: 0,
+		  destination: "",
+		  newWindow: false,
+		  close: true,
+		  gravity: "top", // `top` or `bottom`
+		  position: "right", // `left`, `center` or `right`
+		  stopOnFocus: true, // Prevents dismissing of toast on hover
+		  style: {
+		  	fontSize: "x-large",
+		    background: "linear-gradient(to right, #00b09b, #96c93d)",
+		  },
+		  onClick: function(){} // Callback after click
+		}).showToast();
+
+		}
+	})	
 
 
-
-	 ///////////////////////////////
-	 // 	  CLIENTE !!!
-	 ///////////////////////////////
-
+})
 
 btnCliente.addEventListener("click", () => { 
  	limpiarCampos()
+		document.body.appendChild(cuadroPrincipal8)
+		document.body.appendChild(cuadroPrincipal3)
+		document.body.appendChild(cuadroPrincipal2)
+		document.body.appendChild(cuadroPrincipal5)
+		document.body.appendChild(cuadroPrincipal6)
+		document.body.appendChild(cuadroPrincipal4)
 
 
-
-
-	cuadroPrincipal3.innerHTML = ` <br> Elija la opcion que desea <br>  `
-
-	cuadroPrincipal3.innerHTML = `	 <br><button class="btn btn-warning btn-custom m-1"  id="btnProductos">VER PRODUCTOS</button><br>
+	cuadroPrincipal3.innerHTML = `	 <br><button class="btn btn-warning btn-custom m-1 "  id="btnProductos">VER PRODUCTOS</button><br>
 	<button class="btn btn-warning btn-custom m-1"  id="btnVerCarrito">VER CARRITO</button><br>
 									<button class="btn btn-warning btn-custom m-1"  id="btnSalir">SALIR | VOLVER </button><br>`
 
@@ -229,27 +198,29 @@ btnCliente.addEventListener("click", () => {
 	const btnVerCarrito = document.getElementById('btnVerCarrito')
 	const btnSalir = document.getElementById('btnSalir')
 
-
 	var i=0
 	document.body.appendChild(cuadroPrincipal2)
 
-
-/////////////////////////////////////////// BOTON SALIR
 	btnSalir.addEventListener("click", () => {
 			console.log("SALIR")
 			cuadroPrincipal2.innerHTML = ""
 			cuadroPrincipal3.innerHTML = ""
 			cuadroPrincipal5.innerHTML = ""
+			cuadroPrincipal8.innerHTML = ""
+			cuadroPrincipalArribaArriba.innerHTML = ""
+
 	})
 
-
-
-
-
-
-////////////////////////////////////////// BOTON PRODUCTOS 
+ 
 	btnProductos.addEventListener("click", () => {
 
+
+		
+	    btnProductos.classList.add('popup-active')
+
+	    setTimeout(() => {
+	        btnProductos.classList.remove('popup-active')
+	    }, 2500)
 
 
 	document.body.appendChild(cuadroPrincipal3)
@@ -258,6 +229,7 @@ btnCliente.addEventListener("click", () => {
 		cuadroPrincipal4.innerHTML = ""					
 		cuadroPrincipal6.innerHTML = ""
 		
+	
 
 		cuadroPrincipal2.innerHTML +=	`<H3> LISTA DE PRODUCTOS A COMPRAR: <br>  </H3>`
 	for (item of items) {
@@ -265,19 +237,12 @@ btnCliente.addEventListener("click", () => {
 		cuadroPrincipal2.innerHTML +=  `  ${item.nombre}  || Stock: ${item.cantidad} ||   ${item.precio} $   <br>`
 
 	}
-		
-		cuadroPrincipalArribaArriba.innerHTML = `<br> QUE QUIERES COMPRAR: <input type="text" id="textoAcomprar"> :
+		cuadroPrincipalArribaArriba.innerHTML = `<br> QUE QUIERES COMPRAR (mayusculas): <input type="text" id="textoAcomprar"> :
 												<br> CUANTAS UNIDADES : <input type="number" value="0" id="numeroAComprar"> 
 												<br> <br><button class="btn btn-warning btn-custom m-1"  id="btnAgregarAlCarro">AGREGARLO AL CARRO</button><br> `
 
 		document.body.appendChild(cuadroPrincipalArribaArriba)
-
-
-
 	
-
-	///////////////////////////////////////// BOTON AGREGAR AL CARRO ( )
-			
 		
 			const btnAgregarAlCarro = document.getElementById('btnAgregarAlCarro')
 			 btnAgregarAlCarro.addEventListener("click", () => {
@@ -285,44 +250,41 @@ btnCliente.addEventListener("click", () => {
 			document.body.appendChild(cuadroPrincipal5)
 
 					document.body.appendChild(cuadroPrincipal3)	
-				
-
-				
-				 
-
-			
-			
  		 	const textoAcomprar = document.getElementById('textoAcomprar').value 
 			const numeroAComprar = document.getElementById('numeroAComprar').value 
 
-
-		
         const buscado = items.find(producto => producto.nombre === textoAcomprar)
     				console.log(buscado)
 
    		if (buscado == undefined){
-			alert("No existe este producto")
+   			Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "No existe este producto ",
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
+
 			
 		} if (numeroAComprar < buscado.cantidad) {
-			 alert("AGREGANDO........" + textoAcomprar)
-			alert("AGREGADO!! Gracias.")
+
+			Swal.fire({
+			    position: 'top',
+			    icon: 'success',
+			    title: `AGREGANDO...... ${textoAcomprar}`,
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
 			miCarrito.push(new Producto(buscado.nombre,buscado.precio*numeroAComprar,buscado.nroItem, numeroAComprar, buscado.subtotal))
- 
+ 		
 			buscado.cantidad = buscado.cantidad - numeroAComprar 
 
 
 			const idNew = i+1
 			guardarLocal(idNew, JSON.stringify(miCarrito[i]))
 			i++	
-
-			
-			 
-				console.log(idNew)
-				console.log(buscado)
-
-			
-
-
 
 			 	cuadroPrincipal2.innerHTML = ""
 							
@@ -333,52 +295,50 @@ btnCliente.addEventListener("click", () => {
 		cuadroPrincipal2.innerHTML +=  `  ${item.nombre}  || Stock: ${item.cantidad} ||   ${item.precio} $   <br>`
 
 	}
+		console.log (...miCarrito)
 
 			document.body.appendChild(cuadroPrincipalArribaArriba)
-
-	/////////////////////////////////////////////////////////////////////////////
 
 			 document.getElementById('textoAcomprar').value = ""
 			  document.getElementById('numeroAComprar').value = ""
 
 			} else {
-				alert("No hay tanto stock")
+				Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "No hay tanto stock ",
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
 			}
-
-
-
-
-
-			console.log(textoAcomprar)
-	
-			console.log(numeroAComprar)
 
 
 		 		})
 
 	})
 
-
-
-
-//////////////////////////////////////// BOTON VER CARRITO!
-
 	btnVerCarrito.addEventListener("click", () => {
+
+
+		
+	    btnVerCarrito.classList.add('popup-active')
+
+	    setTimeout(() => {
+	        btnVerCarrito.classList.remove('popup-active')
+	    }, 2500)
+
+	    
 		console.log("CARRO")
 							document.body.appendChild(cuadroPrincipal2)
 
 					document.body.appendChild(cuadroPrincipal5)
 
-
 		cuadroPrincipalArribaArriba.innerHTML = `` 
 		var subtotal = 0
 		cuadroPrincipal2.innerHTML = `Tu Carrito Hasta Ahora es : `
 
-			
-				
-
 		for(micarro of miCarrito){
-
 			 subtotal += micarro.precio
 			 console.log("MUESTRO CARRITO")
 			 console.log(micarro.nombre)
@@ -393,7 +353,6 @@ btnCliente.addEventListener("click", () => {
 			 cuadroPrincipal2.innerHTML +=  `<br> TU TOTAL ES: ${subtotal} <br>` 
 
 
-
 			  cuadroPrincipal5.innerHTML =  `<button class="btn btn-warning btn-custom m-1 inicioE"  id="btnComprar">COMPRAR!</button>
 			  			<br> <button class="btn btn-warning btn-custom m-1 inicioE"  id="btnLimpiarCarrito">LIMPIAR CARRITO</button>
 				<br><br><br> <button class="btn btn-warning btn-custom m-1 inicioE"  id="btnGuardarCarrito">GUARDAR CARRITO || ESCRIBA EL NOMBRE PRIMERO </button>
@@ -404,34 +363,53 @@ btnCliente.addEventListener("click", () => {
 
 				` 
 		
-			
-//////////////////// BOTON COMPRAR
-
-
 	const btnComprar = document.getElementById(`btnComprar`)
 
 
 			btnComprar.addEventListener("click", () => {
 
-				alert("Comprando.......")
-				alert("COMPRADO ! , Gracias por elegirnos.")
-				console.log("Compro un carrito")
-				 subtotal = 0
+			Swal.fire({
+			    position: 'top',
+			    icon: 'question',
+			    title: `Estas seguro de comprar ?? `,
+			    showConfirmButton: true,
+			    showCancelButton: true,
+			    timer: 0,
 
-				localStorage.clear()
-				vaciarArray(miCarrito)
-				cuadroPrincipal4.innerHTML = ""
-				 cuadroPrincipal6.innerHTML = ""
-				cuadroPrincipal2.innerHTML = `Tu Carrito Hasta Ahora es : `
-		
-			 cuadroPrincipal2.innerHTML +=  `<br> TU TOTAL ES: ${subtotal} <br>` 
 			})
 
+			.then((value) => {
+					console.log(value)
+  				switch (value.isConfirmed) {
+ 			
+  				  case true:
+     				 swal.fire({title: "COMPRADO", position: 'top',  icon: 'success'});
+      				break;
+				  case false:
+     				 swal.fire({title: "Cancelado", position: 'top', icon: 'error'});
+      				break;
 
+      		  }
+      		  	console.log(value.isConfirmed)
+			
 
-	//////////////////// BOTON limpiar		
+				if(value.isConfirmed == true){
+
+					console.log("Compro un carrito")
+				 	subtotal = 0
+
+					localStorage.clear()
+					vaciarArray(miCarrito)
+					cuadroPrincipal4.innerHTML = ""
+					 cuadroPrincipal6.innerHTML = ""
+					cuadroPrincipal2.innerHTML = `Tu Carrito Hasta Ahora es : `
+			
+				 	cuadroPrincipal2.innerHTML +=  `<br> TU TOTAL ES: ${subtotal} <br>` 
+				 }
+			 });
+			})
+
 			const btnLimpiarCarrito = document.getElementById(`btnLimpiarCarrito`)
-
 
 			btnLimpiarCarrito.addEventListener("click", () => {
 
@@ -448,28 +426,16 @@ btnCliente.addEventListener("click", () => {
 			})
 
 
-
-
-
-////////////////////// BOTON GUARDAR CARRITO ///////////
-
 			const btnGuardarCarrito = document.getElementById(`btnGuardarCarrito`)
 
-			
-
-			var subto = subtotal
+						var subto = subtotal
 			btnGuardarCarrito.addEventListener("click", () => {
-
-
-				
-				 
+	 
 				localStorage.clear()
 				
 				cuadroPrincipal2.innerHTML = ""
 				
-				 
-				
-				const nombreChango = document.getElementById(`nombreChango`).value
+				 const nombreChango = document.getElementById(`nombreChango`).value
 				document.getElementById(`nombreChango`).value=""
 				console.log(nombreChango)
 				dNew2 = idNew2+1
@@ -515,9 +481,6 @@ btnCliente.addEventListener("click", () => {
 
 			})
 
-
-////////////////  PASAR ESTO A ECOMERCE.... ===========================
-
 			const btnRecuperarCarrito = document.getElementById(`btnRecuperarCarrito`)
 			
 			btnRecuperarCarrito.addEventListener("click", () => {
@@ -525,10 +488,7 @@ btnCliente.addEventListener("click", () => {
 
 				const recuperoChango = document.getElementById(`recuperoChango`).value
 				document.getElementById(`recuperoChango`).value=""
-
-				
-
-
+			
 				const buscanding = JSON.stringify(Object.keys(sessionStorage))
 
 				const buscanding2 = Object.keys(sessionStorage)
@@ -561,88 +521,52 @@ btnCliente.addEventListener("click", () => {
 				subto = subto + miCarrito[i].precio	
 		
 				cuadroPrincipal2.innerHTML += `<BR> ${recuperadoYa[i].nombre} || ${recuperadoYa[i].precio} $ || ${recuperadoYa[i].cantidad} UNIDADES.. || `
-				
 
 				}
-
-					
 		
 			 cuadroPrincipal2.innerHTML +=  `<br> TU TOTAL ES: ${subto} <br>`
 				
 
-		
+				} else {	Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "El nombre del chango es incorrecto ",
+			    showConfirmButton: false,
+			    timer: 2000,
 
-
-
-
-				} else {alert("el nombre del chango es incorrecto")}
+			})}
 					console.log(miCarrito)
 					console.log(recuperoChango)
 						console.log(buscanding)
 							console.log(buscanding2)
 
 
-
-
 				 subtotal = 0
-
-				
-
-		
+			
 			})
-
-
-
-		
 	})
 	
-
-	// cierra boton clientes
 })
 	
-
-	 ///////////////////////////////
-	 ///////////////////////////////
-	 ///////////////////////////////
-	 // 	  EMPLEADOS !!!
-	 ///////////////////////////////
-	 ///////////////////////////////
-	 ///////////////////////////////
-
 	 btnEmpleado.addEventListener("click", () => { 
 		 limpiarCampos()
 	 	cuadroPrincipal2.innerHTML = `Ponga su contraseña aqui (1234): . <input type="password" name"contra" id="contrasena"> 
-				`
-
-	cuadroPrincipal2.innerHTML += `	<button class="btn btn-warning btn-custom m-1 inicioE"  id="btnAceptar">ACEPTAR</button>`
-	 		
+				`	
+				cuadroPrincipal8.innerHTML = ""
+	cuadroPrincipal2.innerHTML += `	<button class="btn btn-warning btn-custom m-1 inicioE"  id="btnAceptar">ACEPTAR</button>`	 		
 
 	 	document.body.appendChild(cuadroPrincipal2)
 
-
-
-// 	  EMPLEADOS !!!
-
-	
 	const btnAceptar = document.getElementById('btnAceptar')
 
-
 	btnAceptar.addEventListener("click", () => {  
-
 
 		const contrasena = document.getElementById('contrasena').value;
 if (contrasena == 1234) {
 
-		
-	
-
-	
-
-	
-	 	cuadroPrincipal2.innerHTML = `Elija la opcion deseada `
+			 	cuadroPrincipal2.innerHTML = `Elija la opcion deseada `
 
 		document.body.appendChild(cuadroPrincipal2)
-
 
 
 	 	cuadroPrincipal2.innerHTML += `  <br><button class="btn btn-warning btn-custom m-1"  id="btnAgregarE">AGREGAR PRODUCTO NUEVO</button><br>  `
@@ -651,17 +575,12 @@ if (contrasena == 1234) {
 		cuadroPrincipal2.innerHTML += `	<button class="btn btn-warning btn-custom m-1"  id="btnVerListaE">VER LISTA</button><br>`
 		cuadroPrincipal2.innerHTML += `	<button class="btn btn-warning btn-custom m-1"  id="btnSalirE1">SALIR | VOLVER </button><br>`
 
-
 		const btnAgregarE = document.getElementById('btnAgregarE');
 		const btnModificarStockE = document.getElementById('btnModificarStockE')
 		const btnAumentoE = document.getElementById('btnAumentoE')
 		const btnVerListaE = document.getElementById('btnVerListaE')
 		const btnSalirE1 = document.getElementById('btnSalirE1')
 
-
-
-
-/// BTN AGREGAR
 		btnAgregarE.addEventListener("click", () => {  
 
 		console.log("agregar")
@@ -676,59 +595,76 @@ if (contrasena == 1234) {
 			document.body.appendChild(cuadroPrincipal4)
 		
 
-
-	//  BOTON ACEPTAR
 		cuadroPrincipalArribaArriba.addEventListener("click", (e) => {
  		 let eventoTarget = e.target;
  		 if (eventoTarget.id == "btnAceptar1"){
  		 	document.body.appendChild(cuadroPrincipal3)
 
- 		 
-
-
 		const nombreDado1 = document.getElementById('nombreDado').value
 		const precioDado1 = document.getElementById('precioDado').value
 		const cantDado1 = document.getElementById('cantDado').value
-
 
 		document.getElementById('nombreDado').value = " " 
 		document.getElementById('precioDado').value = " " 
 		document.getElementById('cantDado').value = " " 
 
-
 		const listaNombres = items.map(producto => " <br>  nombre: " + producto.nombre  + " || precio: " + producto.precio + "$  ||  item: " + producto.nroItem + " ||  cantidad: " + producto.cantidad )
-
-
         const buscado = items.find(producto => producto.nombre === nombreDado1)
-
-
-        // BUSCADO ES UNDEFINED ( PORQUE ES PC)
-        // BUSCADO ES PAN (PORQUE EXISTE )
 
 		if (buscado == undefined){
 		if (precioDado1 > 0 || precioDado1 == 'null') {
 		if (cantDado1 > 0 || cantDado == 'null') {
 		
 
-		alert(`EL PRODUCTO ${nombreDado1}  FUE AGREGADO!`)
+		
+
+		Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: `EL PRODUCTO ${nombreDado1}  FUE AGREGADO!`,
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
+
+
+
+
 		const nroItemDado1 = items.length+1
 		items.push(new Producto(nombreDado1, precioDado1, nroItemDado1, cantDado1));
 		mostrarArrayItems(items,cuadroPrincipal3)
-		cuadroPrincipal4.innerHTML = `<br> <h3>Ultimo en agregar : ${nombreDado1} </h3><br>`
-			
+		cuadroPrincipal4.innerHTML = `<br> <h3>Ultimo en agregar : ${nombreDado1} </h3><br>`			
 
-		} else { alert("Ingresa cantidad")}
-		} else { alert("Ingresa precio")}
-		} else {alert(`EL PRODUCTO ${nombreDado1}  YA EXISTE!`)}
+		} else { Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "Ingese cantidad ",
+			    showConfirmButton: false,
+			    timer: 2000,
 
+			})}
+		} else { Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "Ingese precio ",
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})}
+		} else {
+Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: `EL PRODUCTO ${nombreDado1}  YA EXISTE!`,
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
+}
 
         console.log(nombreDado1)
         console.log(precioDado1)
-        console.log(cantDado1)
-	
-
-		
-	
+        console.log(cantDado1)	
 
  		 } if (eventoTarget.id == "btnVolver1"){
 
@@ -739,28 +675,11 @@ if (contrasena == 1234) {
 
  		 }
  		 else {}
-
- 	 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO AGREGADO DE PRODUCTOS !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
  		 })
-
-	 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL BOTON btnAgregarE !!!
-	 ///////////////////////////////
-	 ///////////////////////////////
 
 		})
 
-
-
-//  BOTON MODIFICAR STOCK
 		btnModificarStockE.addEventListener("click", () => {  
-
-
 		cuadroPrincipal3.innerHTML = ""
 		cuadroPrincipal4.innerHTML = ""
 
@@ -773,25 +692,25 @@ if (contrasena == 1234) {
 		<br><button class="btn btn-warning btn-custom m-1"  id="btnAceptar">Aceptar</button><br> 
 		<br>
 
-
 		`
-
 		cuadroPrincipalArribaArriba.innerHTML += `<br> ${listaNombres}`
 			document.body.appendChild(cuadroPrincipalArribaArriba)
 		
-
-		
-/////////////////  BOTON! 
 		const btnAceptar = document.getElementById('btnAceptar')
 		btnAceptar.addEventListener("click", () => { 
 		
-
-
 		const prodcutoARetirar = document.getElementById("productoAModificarStockE").value
 		const buscado = items.find(producto => producto.nombre === prodcutoARetirar)
 
 		if(buscado == undefined){
-		alert("no existe este producto ( ACORDATE DE LAS MAYUSCULAS)")
+			Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "No existe este producto ",
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
 		} else {
 
 		cuadroPrincipalArribaArriba.innerHTML = ` <br> <br> Producto:  ${buscado.nombre}  | PRECIO: ${buscado.precio}  | ITEM:  ${buscado.nroItem}  | CANT: ${buscado.cantidad} <br> <br>
@@ -802,8 +721,6 @@ if (contrasena == 1234) {
 		`
 		}
 
-
-/////////////////  BOTON! 
 		const btnAceptar = document.getElementById("btnAceptar")
 		btnAceptar.addEventListener("click", () => { 
 		
@@ -815,18 +732,10 @@ if (contrasena == 1234) {
 
 		})
 
-			 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO btnModificarStockE !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
 		})
-
 
 					document.body.appendChild(cuadroPrincipalArribaArriba)
 
-
-// BOTON MODIFICANDOPRECIO AUMENTO
 
 		btnAumentoE.addEventListener("click", () => {  
 
@@ -845,19 +754,21 @@ if (contrasena == 1234) {
 		<br> ${listaNombres} `
 
 
-
-/////////////////  BOTON! 
-
 		const btnAceptar = document.getElementById("btnAceptar")
 		btnAceptar.addEventListener("click", () => { 
 
-
 		const productoInflado = (document.getElementById("inpAumentoE1").value)
-
 
 		const inflado = items.find(producto => producto.nombre === productoInflado)
 		if(inflado == undefined){
-		alert("no existe este producto ( ACORDATE DE LAS MAYUSCULAS)")
+			Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: "No existe este producto ",
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
 		} else {
 
 		const precioActualizado = parseInt(document.getElementById("inpAumentoE2").value)
@@ -869,21 +780,9 @@ if (contrasena == 1234) {
 
 	})
 
-
-
-
-			 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO btnAumentoE !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
 		})
 
-	
-// BOTON VER LISTA
-		btnVerListaE.addEventListener("click", () => {  
-
-
+			btnVerListaE.addEventListener("click", () => {  
 
 		cuadroPrincipal3.innerHTML = ""
 		cuadroPrincipal4.innerHTML = ""
@@ -893,17 +792,9 @@ if (contrasena == 1234) {
  		 	cuadroPrincipalArribaArriba.innerHTML = `<br> ${listaNombres}`
 
 			document.body.appendChild(cuadroPrincipalArribaArriba)
-
-
-			 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO btnVerListaE !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
+			
 		})
 
-
-// BOTON SALIDA
 
 		btnSalirE1.addEventListener("click", () => {  
 
@@ -911,55 +802,26 @@ if (contrasena == 1234) {
 
 		cuadroPrincipal3.innerHTML = ""
 		cuadroPrincipal4.innerHTML = ""
-		
+		cuadroPrincipal8.innerHTML = ""
 
 				cuadroPrincipal2.innerHTML = ""
 			cuadroPrincipalArribaArriba.innerHTML = ""
 
 			document.body.appendChild(cuadroPrincipalArribaArriba)
 
-
-			 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO btnSalirE1 !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
-		})
-
-
-	
-		
+		})		
  
 } else {
-// si pone mal la contraseña (cierre de If)
-alert("su contraseña es incorrecta, intente nuevamente")
+	Swal.fire({
+			    position: 'top',
+			    icon: 'warning',
+			    title: `SU CONTRASEÑA ES INCORRECTA,  intente nuevamente`,
+			    showConfirmButton: false,
+			    timer: 2000,
+
+			})
 }
-	 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL BOTON btnAceptar !!!
-		 ///////////////////////////////
-	 ///////////////////////////////
+	 
 })
-	 ///////////////////////////////
-	 ///////////////////////////////
-	// 	  TERMINA EL EVENTO btnEmpleado!!!
-		 ///////////////////////////////
-	 ///////////////////////////////
+	 
 })
-
-
-
-
-
-
-
-
-
-
-// // - FINAL DEL PROYECTO >>
-
-
-
-		
-
-

@@ -1,0 +1,85 @@
+
+html, body{
+    height:100% !important;
+/*    overflow:hidden;*/
+    width:100%;
+    height:height;
+    margin:0 ;
+    padding:0;
+    align-content: center !important;
+/*    background: url("https://clubdepescauteantel.com.uy/wp-content/uploads/2019/12/almacen-4.jpg") no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #464646;*/
+    font-style: normal;
+    font-weight: bold !important;
+    text-decoration-color: black !important;
+    text-decoration-style: solid;
+    color:  black !important;
+    text-align: center !important;
+    font-size: 1.2rem !important;
+     background-color: #45B39D !important;
+  }
+
+section{
+  background: url("https://clubdepescauteantel.com.uy/wp-content/uploads/2019/12/almacen-4.jpg") no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 150px;
+
+}
+
+
+
+#cuadroPrincipal{
+  
+}
+
+
+#titulito{
+  width: 100%;
+  height: 100%;
+  text-decoration-color: white !important;
+  color: white !important;
+  font-style: normal !important;
+  align-content: center !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: center !important;
+}
+
+#cuadroPrincipal2{
+  border: 2px solid #ccc  !important;
+  text-align: center !important;
+   background-color: #45B39D;
+}
+
+
+#cuadroPrincipal3{
+  background-color: #45B39D;
+}
+
+#cuadroPrincipal4{
+    background-color: #45B39D;
+}
+
+#cuadroPrincipal5{
+     background-color: #45B39D;
+}
+
+#cuadroPrincipal6 {
+    background-color: #45B39D;
+}
+
+#cuadroPrincipalArribaArriba{
+     background-color: #45B39D;
+}
+
+#cuadroPrincipal8{
+      background-color: #45B39D;
+}
+
+.popup-active{
+  background-color: red !important;
+}
